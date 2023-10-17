@@ -1,0 +1,26 @@
+{
+  "name": "googlecalendartgbot",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "google calendar for telegram",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/main.js",
+    "dev": "nodemon ./src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anti6ot/Calendar_bot.git"
+  },
+  "author": "Anti6ot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anti6ot/Calendar_bot/issues"
+  },
+  "homepage": "https://github.com/Anti6ot/Calendar_bot#readme",
+  "devDependencies": {
+    "config": "^3.3.9",
+    "nodemon": "^3.0.1",
+    "telegraf": "^4.14.0"
+  }
+}
