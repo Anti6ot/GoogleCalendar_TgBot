@@ -1,0 +1,19 @@
+{
+   
+
+
+    "BOT_TOKEN": "tgBotfther",
+    "GOOGLE_SERVICE_ACCOUNT_EMAIL": "node-calendar-bot@telegram-calendar-402208.iam.gserviceaccount.com",
+    "GOOGLE_PRIVATE_KEY": "-----BEGIN PRIVATE KEY-----\nin Google calendar settings\nQurJy5ecqdia65ckMUtcvogLOqPEN+vwUYu+LGg5AJqMTXvKi4op8MQDuaZpdgAy\nDanEHwu0F1kjMS+1SxFcEjD+c/GeqOYLlwJ8+rhC+r0NCwOxwkeOfmNuSd3eX4Yb\ncfdcL37wuqMGNb/DF+5Sngv41bbtrMuVTIDkKsLeyGJp2t1evtNkSPthR4SlARWv\nxX/XkgvN8hoEMwLXdaEyQAN6HjGQs1MlknEdw5xvN0sOGrH5wSWZwTbocHi6HnJf\nHL2joDhZAR5RELMchGCy1PpIHHxx2B+U0PVmy46831EGYNFXdxiCQe1HCSSDybWU\nqHd85ZwNAgMBAAECgf8v5DRsWeVgYsWek9bWH4TWj8JME5p9KMSu17jyjugrwjze\n7TwLgYnBCKUZg32/k6rlGv4BGLH954xZYkQXX34jSCJoBUErDLoDTLYTOyJKXGFI\n/+ku2ABxCmo5qdRzPPNCk3srV9RLAwwUjI2MGtEFbWHl9GGOG/objkCYctY81Xtp\ns+uvt6oNItgTRse5KvPlV7tik653HhZkdGm+/VLfOKT175oH8TuRZV3zeDwO1UjL\npyx77YawdlfJGUOGLQhv+ZUtbUk0rqmo41ysH2lh1xtiDKzpMJP++JExui0pwYv2\nt9GyYr5SYbSqBFMNUX5NPZWnSJJY1iSqWurAVIECgYEA1oVn/GsUmR/dgYhaOG+R\nphH+8x3Cyl5oxL6AB0IB0ISH44YgEWKA4IE/RYwGNoFMv954yYWzk2ro++m2G91K\nZuPK7X3VUHsoXumHthmWnsx41vvZKAu3wd2Rhgo4yv2w2CuqmwOTSzhl9bW+S/XL\nlsH9ARLU+u0xRPHSa5MTFU0CgYEA0FHsDLarbFHuTB+itHyrn8kC2nqGjOyRMsY6\nZQUXNN25P+nqf9p9sZaIc4W2lxYzZCchiugA7pbBX50DFdiFuXASKIrEuNVALyEy\niRSaXURqTsfzKzmg66xCvOdm5foMonakp10/pmQQR9RhMiVfKTnjaIUeFFYMoRt9\nx7qCQcECgYAHplAz9xmP8Ev0z4jwFEJsWp3ty3TjxIQV5/kmyRrJdcBmw6SnGg0g\ndFtuPnUGQowbF3LVNNhXfGt8eDQPQE/j5WGaIG+X5Bxnbgpx2u29EeuJNwfiXrCZ\n0C3dSsYFrxA8VSpLRtBc0VEJdwanLMeqw5YjEKnZnNWx8LGhNmhqzQKBgQCR9GPb\nQHz4hqrcIOohZJvmdrKOGnx87h6JIYO2VYu92X86fYx0CcQ5EYwGzG9yifZ1vEjv\nBr/oai2P7PVFcA+5LgE68IcGLTssCilbC9lfcVi+W69O4LCTjnyv170rcjc5+MBC\nFr5KuR8DBJUYykBTJSDkkSfS/bsZgaZtsooiwQKBgQCSjZYk/MuFPrYZ9HAPv4Kb\nV1N3plGij91WX8guX3P/FZ4CKrxAxIk9NuI53eOPd2MjPy4grp8F7uMJvYKqfc2Y\n6WAhvAHDruKHuhPRGyfxHr+ktz94MyHO1Msc9v+wJ1RiaGUYQrJszeoKu7L+PKeh\nyV6Cns+dPz/P2QmtwmUK0Q==\n-----END PRIVATE KEY-----\n",
+    "type": "service_account",
+    "project_id": "telegram-calendar-402208",
+    "private_key_id": "Google calendar settings",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nGoogle calendar settings\nGoogle calendar settings\nDGoogle calendar settings",
+    "client_id": "104182515194778460122",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/node-calendar-bot%40telegram-calendar-402208.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+
+}

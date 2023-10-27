@@ -1,81 +1,73 @@
-import { Telegraf } from "telegraf";
-import { message } from "telegraf/filters";
+import TelegramApi from "node-telegram-bot-api";
 import config from "config";
-import { calendar } from "@googleapis/calendar";
-import { google } from "googleapis";
-// const fs = require("fs");
-// const { google } = require("googleapis");
+import {Calendar} from 'telegram-inline-calendar';
+import calendar from "./common/calendar.js";
 
-// console.log(config);
-const client_secret = {
-  YOUR_CLIENT_ID:
-    "460924242671-9p21ookaop10luoe060eme5t6lo4t0km.apps.googleusercontent.com",
-  YOUR_CLIENT_SECRET: "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",
-  YOUR_REDIRECT_URL: "/",
-  CALENDAR_ID:
-    "ced1aaf63ba15dcdb8b4404c8ed197cd0592e66a8590de5cccd2a0139fd9b1ba@group.calendar.google.com",
-};
+const bot = new TelegramApi(config.get("BOT_TOKEN"), { polling: true });
 
-const CALENDAR_ID =
-  "ced1aaf63ba15dcdb8b4404c8ed197cd0592e66a8590de5cccd2a0139fd9b1ba@group.calendar.google.com";
-const SCOPE_CALENDAR = "https://www.googleapis.com/auth/calendar"; // authorization scopes
-const SCOPE_EVENTS = "https://www.googleapis.com/auth/calendar.events";
+bot.setMyCommands([
+  { command: "/start", description: "Начальное приветствие" },
+  { command: "/info", description: "Получить информацию о пользователе" },
+  { command: "/eventset", description: "Введите дату предстоящего события" },
+]);
 
-(async function run() {
-  // INNER FUNCTIONS
-  // async function readPrivateKey() {
-  //   const content = fs.readFileSync(KEYFILE);
-  //   return JSON.parse(content.toString());
-  // }
+const googleCalendar = new Calendar(bot, {
+  date_format: 'YYYY-MM-DD',
+  language: 'ru'
+});
 
-  async function authenticate(key) {
-    const jwtClient = new google.auth.JWT(
-      key.client_email,
-      null,
-      key.private_key,
-      [SCOPE_CALENDAR, SCOPE_EVENTS]
+const dataGcalendar = {
+  text: "",
+  timeStart:"",
+  timeEnd:"",
+  dateStart: "",
+  dateEnd:"",
+  msg: ""
+}
+
+
+function start() {
+
+  bot.onText(/\/start/, msg => {
+    const chatId = msg.chat.id;
+    bot.sendMessage(
+      chatId,
+      `Добро пожаловать в чат с ботом google calendar. С помощью этого бота вы можете с легкостью добавить событие в свой гугл календарь`
     );
-    await jwtClient.authorize();
-    return jwtClient;
-  }
+  })
+  bot.onText(/\/info/, msg => {
+    const chatId = msg.chat.id;
+    return bot.sendMessage(chatId, `Тебя зовут ${msg.chat.first_name}`);
+  })
 
-  async function createEvent(auth) {
-    const event = {
-      summary: "Habr Post Demo",
-      description:
-        "Тест для демонстрации интеграции nodejs-приложения с Google Calendar API.",
-      start: {
-        dateTime: "2023-10-18T16:00:00+02:00",
-        timeZone: "Europe/Riga",
-      },
-      end: {
-        dateTime: "2023-10-20T18:00:00+02:00",
-        timeZone: "Europe/Riga",
-      },
-    };
+  bot.onText(/\/eventset/, msg => {
+    const chatId = msg.chat.id;
+    try {
+      calendar(bot,dataGcalendar, googleCalendar, msg, chatId)
+      bot.on("callback_query", (query) => {
+          let res;
+          res = googleCalendar.clickButtonCalendar(query);
+    
+          if (res !== -1) {
+            if(query.message.text === 'Пожалуйста, выберите время:'){
+            return  dataGcalendar.timeStart = query.data.trim().replace(/[a-zа-яё]/gi, '').slice(12, 17);
+            }
+            if(query.message.text === 'Пожалуйста, выберите дату:'){
+             return dataGcalendar.dateStart = query.data.trim().replace(/[a-zа-яё]/gi, '').slice(1,11);
+            }
+            return null
+          }
+      });
+      return bot.sendMessage(chatId, "введите описание события")
+      
+    } catch (error) {
+      console.log(`ERROR MAIN.js: ${error}`)
+    }
+   
+  })
 
-    let calendar = google.calendar("v3");
-    await calendar.events.insert({
-      auth: auth,
-      calendarId: CALENDAR_ID,
-      resource: event,
-    });
-  }
+ 
+}
 
-  // MAIN
-  try {
-    const auth = await authenticate(config);
-    await createEvent(auth);
-  } catch (e) {
-    console.log("Error: " + e);
-  }
-})();
-const bot = new Telegraf(config.get("BOT_TOKEN"), {
-  handlerTimeout: Infinity,
-});
 
-bot.start((ctx) => ctx.reply("welcome"));
-bot.on("message", (ctx) => {
-  console.log(ctx.update);
-});
-bot.launch();
+start();
